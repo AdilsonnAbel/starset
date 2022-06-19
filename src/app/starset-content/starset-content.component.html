@@ -1,0 +1,14 @@
+<!-- <section *ngIf="albun"> -->
+<section>
+  <article>
+    <figure>
+      <img src="{{ albun?.image }}" alt="" />
+    </figure>
+    <span>{{ albun?.released }}</span>
+    <span>{{ albun?.recordLabel }}</span>
+  </article>
+
+  <article>
+    <p *ngFor="let song of albun?.songs">{{ song.number }}. {{ song.title }}</p>
+  </article>
+</section>

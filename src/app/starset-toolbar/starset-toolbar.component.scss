@@ -1,0 +1,42 @@
+$font-color: hsl(342, 100%, 57%);
+$font-color-hover: hsl(177, 100%, 59%);
+
+:host {
+  grid-area: 2 / 2 / 3 / 3;
+  display: grid;
+  grid-template: 20px 40px 20px / 1fr max-content 1fr;
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+nav {
+  grid-area: 2 / 2 / 3 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, max-content 20px) max-content;
+
+  > a {
+    font-size: 2.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: $font-color;
+    transition: color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    place-self: center start;
+  }
+
+  > a:hover {
+    color: $font-color-hover;
+    box-shadow: 0px 2px 0px 0px $font-color-hover;
+  }
+
+  @for $i from 1 through 3 {
+    a:nth-of-type(#{$i}) {
+      grid-area: 1 / #{2 * $i - 1} / 2 / #{2 * $i - 1};
+    }
+  }
+}

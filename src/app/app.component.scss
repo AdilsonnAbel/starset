@@ -1,0 +1,23 @@
+:host {
+  display: grid;
+  grid-template: 80px 80px max-content minmax(0, 1fr) / 1fr max-content 1fr;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(257, 27%, 75%) transparent;
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+h1 {
+  grid-area: 1 / 2 / 2 / 3;
+  place-self: end center;
+  font-size: 3.5rem;
+  color: hsl(177, 100%, 59%);
+  text-shadow: 1px 1px;
+}

@@ -1,0 +1,83 @@
+$font-color-1: hsl(177, 100%, 59%);
+$font-color-2: #c047ff;
+$shadow1: hsl(257, 27%, 10%);
+$shadow2: hsl(257, 27%, 1%);
+
+@mixin tx($tx: $font-color-1, $fs: 1.6rem) {
+  font-size: $fs;
+  font-weight: 700;
+  color: $tx;
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+:host {
+  grid-area: 2 / 4 / 3 / 5;
+  display: grid;
+  grid-template: max-content minmax(0, 1fr) / max-content minmax(0, 1fr);
+}
+
+section {
+  grid-area: 1 / 1 / 2 / 2;
+  display: grid;
+  grid-template: 20px minmax(0, 1fr) 20px / 20px 300px 20px minmax(200px, 1fr) 20px;
+  box-shadow: 0px 5px 15px 0px $shadow1, 0px -5px 15px 0px $shadow1,
+    5px 0px 15px 0px $shadow1, -5px 0px 15px 0px $shadow1;
+  border-radius: 10px;
+
+  > article:nth-of-type(1) {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    grid-template-rows: max-content repeat(2, 10px 20px) 10px;
+
+    > figure {
+      grid-area: 1 / 1 / 2 / 2;
+      box-shadow: 0px 0px 15px 0px $shadow2;
+      border-radius: 10px;
+
+      aspect-ratio: 1 / 1;
+      > img {
+        display: block;
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+
+    @for $i from 1 through 2 {
+      > span:nth-of-type(#{$i}) {
+        grid-area: #{2 * $i + 1} / 1 / #{2 * $i + 2} / 2;
+        @include tx($tx: $font-color-2, $fs: 1.8rem);
+      }
+    }
+  }
+
+  > article:nth-of-type(2) {
+    grid-area: 2 / 4 / 3 / 5;
+    display: grid;
+    grid-auto-rows: 20px 10px;
+
+    > p {
+      @include tx;
+    }
+
+    @for $i from 1 through 16 {
+      > p:nth-of-type(#{$i}) {
+        grid-area: #{2 * $i - 1} / 1 / #{2 * $i} / 2;
+      }
+    }
+  }
+
+  > h3 {
+    grid-area: 2 / 2 / 3 / 3;
+    place-self: center;
+    font-size: 2.7rem;
+    color: $font-color-1;
+    text-shadow: 1px 1px;
+  }
+}

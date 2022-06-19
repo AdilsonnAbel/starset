@@ -1,0 +1,12 @@
+<article>
+  <h3>Discography</h3>
+  <nav>
+    <div *ngFor="let albun of discography">
+      <a [class.select]="albun === selectAlbun" (click)="onSelect(albun)"
+        >{{ albun.title | uppercase }}
+      </a>
+    </div>
+  </nav>
+</article>
+
+<app-starset-content [albun]="selectAlbun"></app-starset-content>
